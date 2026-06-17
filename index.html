@@ -35,15 +35,14 @@ textarea{resize:vertical;min-height:110px;line-height:1.5}
 .btn{padding:9px 20px;border:.5px solid var(--br2);border-radius:var(--rad2);background:none;color:var(--tx);cursor:pointer;font-size:14px;font-weight:500;font-family:inherit;transition:all .15s}
 .btn:hover{background:var(--bg2)}.bp{background:var(--tx);color:#fff;border-color:var(--tx)}.bp:hover{opacity:.85}
 .bs{padding:5px 12px;font-size:12px}
-.br{display:flex;gap:8px;margin-top:1rem}
+.brow{display:flex;gap:8px;margin-top:1rem}
 .res{background:var(--bg2);border-radius:var(--rad2);padding:1rem;font-size:13px;line-height:1.7;color:var(--tx)}
-.res strong{font-weight:600}
 .score-row{display:flex;align-items:center;gap:16px;margin-bottom:1rem}
 .score-n{font-size:40px;font-weight:700}
 .score-bar{height:6px;border-radius:3px;background:var(--bg3);flex:1;overflow:hidden}
 .score-fill{height:100%;border-radius:3px;transition:width .6s ease}
 .badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;margin:2px;font-weight:500}
-.bg{background:var(--gbg);color:var(--g)}.br2{background:var(--rbg);color:var(--r)}.ba{background:var(--abg);color:var(--a)}.bb{background:var(--blbg);color:var(--bl)}
+.bgr{background:var(--gbg);color:var(--g)}.brd{background:var(--rbg);color:var(--r)}
 .ml{font-size:12px;font-weight:600;color:var(--tx2);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
 .mb2{background:var(--bg2);border-radius:var(--rad2);padding:12px;font-size:13px;line-height:1.6}
 .ti-row{display:grid;grid-template-columns:2fr 1fr 80px auto;gap:8px;align-items:end;margin-bottom:1rem}
@@ -61,28 +60,36 @@ textarea{resize:vertical;min-height:110px;line-height:1.5}
 .qb::before{content:'⌥';position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--tx3);font-family:inherit}
 .qb::after{content:'click to copy';position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:10px;color:var(--tx3);font-family:inherit}
 .ov{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;z-index:1000}
-.modal{background:var(--bg);border-radius:var(--rad);padding:1.5rem;width:420px;max-width:90vw;border:.5px solid var(--br2)}
-.mt{font-size:16px;font-weight:600;margin-bottom:8px}
+.modal{background:var(--bg);border-radius:var(--rad);padding:1.5rem;width:480px;max-width:95vw;border:.5px solid var(--br2);max-height:90vh;overflow-y:auto}
+.mt{font-size:16px;font-weight:600;margin-bottom:4px}
 .mde{font-size:13px;color:var(--tx2);margin-bottom:1rem;line-height:1.5}
 .ld{display:flex;align-items:center;gap:8px;color:var(--tx2);font-size:13px}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--tx2);animation:p 1.2s ease-in-out infinite}
 .dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
 @keyframes p{0%,100%{opacity:.3}50%{opacity:1}}
 .empty{text-align:center;padding:2rem;color:var(--tx2);font-size:14px}
-.sec-title{font-size:13px;font-weight:600;margin:1.25rem 0 .5rem}
 .tip{background:var(--gbg);border-left:3px solid var(--g);border-radius:0 var(--rad2) var(--rad2) 0;padding:10px 12px;font-size:13px;color:var(--g);margin-bottom:1rem;line-height:1.5}
-@media(max-width:620px){.stats{grid-template-columns:repeat(2,1fr)}.g2{grid-template-columns:1fr}.ti-row{grid-template-columns:1fr 1fr}.ti-row .btn{grid-column:span 2}header{padding:0 1rem}.main{padding:1rem .75rem}.tab{font-size:11px;padding:7px 2px}}
+/* Provider cards */
+.providers{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0 12px}
+.prov-card{border:.5px solid var(--br2);border-radius:var(--rad2);padding:10px 12px;cursor:pointer;transition:all .15s}
+.prov-card:hover{background:var(--bg2)}.prov-card.selected{border-color:var(--tx);background:var(--bg2)}
+.prov-name{font-size:13px;font-weight:600}.prov-note{font-size:11px;color:var(--tx2);margin-top:2px}
+.prov-free{font-size:10px;font-weight:600;color:var(--g);background:var(--gbg);padding:1px 6px;border-radius:10px;display:inline-block;margin-top:3px}
+.model-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chip{font-size:11px;padding:3px 10px;border-radius:20px;border:.5px solid var(--br2);cursor:pointer;background:none;font-family:inherit;color:var(--tx2)}
+.chip:hover{background:var(--bg2);color:var(--tx)}
+.divider{height:.5px;background:var(--br);margin:1rem 0}
+@media(max-width:620px){.stats{grid-template-columns:repeat(2,1fr)}.g2{grid-template-columns:1fr}.ti-row{grid-template-columns:1fr 1fr}.ti-row .btn{grid-column:span 2}header{padding:0 1rem}.main{padding:1rem .75rem}.tab{font-size:11px;padding:7px 2px}.providers{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
 <header>
   <div class="logo">Job Hunt HQ <span>— Personal Command Center</span></div>
-  <button class="api-btn" id="api-btn" onclick="showModal()">⚙ API Key</button>
+  <button class="api-btn" id="api-btn" onclick="showModal()">⚙ AI Settings</button>
 </header>
 
 <div class="main">
-
   <div class="stats">
     <div class="stat"><div class="stat-v" id="s-total">0</div><div class="stat-l">Total applied</div></div>
     <div class="stat"><div class="stat-v" id="s-today">0</div><div class="stat-l">Applied today</div></div>
@@ -104,14 +111,14 @@ textarea{resize:vertical;min-height:110px;line-height:1.5}
       <div class="ct">72-hour job hunt playbook</div>
       <div class="cd">Apply to 80–100 jobs with ATS-tailored resumes + direct recruiter outreach. Volume × targeting = interviews.</div>
       <div class="step"><div class="sn">1</div><div><div class="st">Run ATS Analyzer on your resume — do this first</div><div class="sd">Go to the ATS tab. Paste any JD + your resume. Fix anything below 75%. Build 3 resume variants: one for Data Analyst/BA, one for Data Engineer/Python Dev, one for ML/AI/GenAI. Save each as PDF.</div></div></div>
-      <div class="step"><div class="sn">2</div><div><div class="st">Morning block 9am–12pm: LinkedIn + Naukri</div><div class="sd">Filter: Last 24 hours · Fresher / 0–1 yr. Use LinkedIn Easy Apply first (fastest pipeline). Target 20 applications. Naukri has the highest volume for Indian freshers — use the Freshers filter.</div></div></div>
-      <div class="step"><div class="sn">3</div><div><div class="st">Evening block 7pm–10pm: Wellfound + CutShort + Indeed</div><div class="sd">Wellfound is best for startup roles and very fresher-friendly. CutShort for Python/ML. Indeed with "Posted Today" filter. Another 20 applications. <strong>40+ applications per day is the minimum target.</strong></div></div></div>
-      <div class="step"><div class="sn">4</div><div><div class="st">10 LinkedIn outreach messages daily — non-negotiable</div><div class="sd">After each application, find the recruiter or HR on LinkedIn. Use the Outreach tab to generate a personalized message. Send it. Companies that receive direct outreach hire 2× faster than those that don't.</div></div></div>
-      <div class="step"><div class="sn">5</div><div><div class="st">Follow up at 48h, track everything in the Tracker tab</div><div class="sd">Data in the Tracker saves between sessions (stored in your browser). After 48h silence, send the follow-up message. Move fast — jobs posted within 24h get filled within 72–96h.</div></div></div>
+      <div class="step"><div class="sn">2</div><div><div class="st">Morning block 9am–12pm: LinkedIn + Naukri</div><div class="sd">Filter: Last 24 hours · Fresher / 0–1 yr. Use LinkedIn Easy Apply first (fastest pipeline). Target 20 applications. Naukri has the highest volume for Indian freshers.</div></div></div>
+      <div class="step"><div class="sn">3</div><div><div class="st">Evening block 7pm–10pm: Wellfound + CutShort + Indeed</div><div class="sd">Wellfound is best for startup roles. CutShort for Python/ML. Indeed with "Posted Today" filter. Another 20 applications. <strong>40+ applications per day is the minimum.</strong></div></div></div>
+      <div class="step"><div class="sn">4</div><div><div class="st">10 LinkedIn outreach messages daily — non-negotiable</div><div class="sd">After each application, find the recruiter on LinkedIn. Use the Outreach tab to generate a personalized message. Companies that receive direct outreach hire 2× faster.</div></div></div>
+      <div class="step"><div class="sn">5</div><div><div class="st">Follow up at 48h, track everything in the Tracker tab</div><div class="sd">Data saves between sessions in your browser. After 48h silence, send the follow-up message. Move fast — jobs posted within 24h get filled within 72–96h.</div></div></div>
     </div>
     <div class="card">
       <div class="ct">LinkedIn search queries</div>
-      <div class="cd">Click any query to copy it. Paste into LinkedIn search → then add filters: Date posted = Past 24 hours, Experience level = Entry level.</div>
+      <div class="cd">Click any query to copy. Paste into LinkedIn search → add filters: Date posted = Past 24 hours, Experience = Entry level.</div>
       <div class="qb" onclick="cq(this)">"data analyst" OR "data engineer" fresher OR "entry level" India</div>
       <div class="qb" onclick="cq(this)">"ML engineer" OR "AI engineer" OR "analytics engineer" "0-1 year" OR "0-2 years" India</div>
       <div class="qb" onclick="cq(this)">"we are hiring" "data" "fresher" OR "graduate" India hiring</div>
@@ -120,11 +127,11 @@ textarea{resize:vertical;min-height:110px;line-height:1.5}
     </div>
     <div class="card">
       <div class="ct">Resume variants to build today</div>
-      <div class="cd">Three resumes, each ATS-tuned for a different role cluster. Keep them ready as PDFs for fast application.</div>
+      <div class="cd">Three resumes, each ATS-tuned for a different role cluster.</div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px">
-        <div style="background:var(--bg2);border-radius:var(--rad2);padding:12px"><div style="font-size:13px;font-weight:600;margin-bottom:4px">Resume A — Analyst</div><div style="font-size:12px;color:var(--tx2);line-height:1.6">Data Analyst · Business Analyst · Analytics Engineer · Reporting Analyst</div></div>
-        <div style="background:var(--bg2);border-radius:var(--rad2);padding:12px"><div style="font-size:13px;font-weight:600;margin-bottom:4px">Resume B — Engineering</div><div style="font-size:12px;color:var(--tx2);line-height:1.6">Data Engineer · Python Developer · Analytics Engineer · ETL Developer</div></div>
-        <div style="background:var(--bg2);border-radius:var(--rad2);padding:12px"><div style="font-size:13px;font-weight:600;margin-bottom:4px">Resume C — AI/ML</div><div style="font-size:12px;color:var(--tx2);line-height:1.6">ML Engineer · AI Engineer · GenAI Engineer · Automation Engineer</div></div>
+        <div style="background:var(--bg2);border-radius:var(--rad2);padding:12px"><div style="font-size:13px;font-weight:600;margin-bottom:4px">Resume A — Analyst</div><div style="font-size:12px;color:var(--tx2);line-height:1.6">Data Analyst · Business Analyst · Analytics Engineer</div></div>
+        <div style="background:var(--bg2);border-radius:var(--rad2);padding:12px"><div style="font-size:13px;font-weight:600;margin-bottom:4px">Resume B — Engineering</div><div style="font-size:12px;color:var(--tx2);line-height:1.6">Data Engineer · Python Developer · ETL Developer</div></div>
+        <div style="background:var(--bg2);border-radius:var(--rad2);padding:12px"><div style="font-size:13px;font-weight:600;margin-bottom:4px">Resume C — AI/ML</div><div style="font-size:12px;color:var(--tx2);line-height:1.6">ML Engineer · AI Engineer · GenAI Engineer</div></div>
       </div>
     </div>
   </div>
@@ -133,13 +140,13 @@ textarea{resize:vertical;min-height:110px;line-height:1.5}
   <div id="p-ats" class="panel">
     <div class="card">
       <div class="ct">ATS Resume Analyzer</div>
-      <div class="cd">Paste a job description + your resume text. AI scores your match, finds missing keywords, and rewrites your summary for this specific JD.</div>
-      <div class="tip">Anything below 75% → do not apply yet. Fix the missing keywords first. This single step stops ~80% of ATS rejections.</div>
-      <label>Job description (paste the full text)</label>
-      <textarea id="jd" placeholder="Paste the full job description here — responsibilities, requirements, skills, everything..."></textarea>
-      <label>Your resume (paste as plain text)</label>
-      <textarea id="cv" placeholder="Paste your resume — skills section, experience, projects, education. Plain text is fine."></textarea>
-      <div class="br">
+      <div class="cd">Paste a job description + your resume. AI scores your match, finds missing keywords, rewrites your summary for this JD.</div>
+      <div class="tip">Anything below 75% → do not apply yet. Fix missing keywords first. This stops ~80% of ATS rejections.</div>
+      <label>Job description</label>
+      <textarea id="jd" placeholder="Paste the full job description here..."></textarea>
+      <label>Your resume (plain text)</label>
+      <textarea id="cv" placeholder="Paste your resume — skills, experience, projects, education..."></textarea>
+      <div class="brow">
         <button class="btn bp" onclick="runATS()">Analyze resume</button>
         <button class="btn" onclick="clrATS()">Clear</button>
       </div>
@@ -157,7 +164,7 @@ textarea{resize:vertical;min-height:110px;line-height:1.5}
   <div id="p-out" class="panel">
     <div class="card">
       <div class="ct">Generate recruiter outreach messages</div>
-      <div class="cd">Fill in four fields. AI generates a LinkedIn connection request, referral ask, and 48h follow-up — all personalized.</div>
+      <div class="cd">Fill in the fields. AI generates a LinkedIn connection request, referral ask, and 48h follow-up — personalized.</div>
       <div class="g2">
         <div><label>Your name</label><input id="o-name" placeholder="Arjun Sharma" /></div>
         <div><label>Recruiter / HM name</label><input id="o-rec" placeholder="Priya Mehta" /></div>
@@ -166,16 +173,14 @@ textarea{resize:vertical;min-height:110px;line-height:1.5}
         <div><label>Company</label><input id="o-co" placeholder="Razorpay" /></div>
         <div><label>Role applied for</label><input id="o-role" placeholder="Data Analyst" /></div>
       </div>
-      <label>Your top skills or a brief achievement (optional — improves quality)</label>
-      <input id="o-skill" placeholder="Python, SQL — built a sales dashboard during internship that reduced reporting time by 40%" />
-      <div class="br">
+      <label>Top skills or achievement (optional)</label>
+      <input id="o-skill" placeholder="Python, SQL — built a dashboard that cut reporting time by 40%" />
+      <div class="brow">
         <button class="btn bp" onclick="runOut()">Generate messages</button>
         <button class="btn" onclick="clrOut()">Clear</button>
       </div>
     </div>
-    <div id="out-res" style="display:none" class="card">
-      <div id="out-body"></div>
-    </div>
+    <div id="out-res" style="display:none" class="card"><div id="out-body"></div></div>
   </div>
 
   <!-- TRACKER -->
@@ -196,7 +201,7 @@ textarea{resize:vertical;min-height:110px;line-height:1.5}
           <button class="btn bs bp" onclick="exportCSV()">Export CSV</button>
         </div>
       </div>
-      <div id="jlist"><div class="empty">No applications logged yet. Add your first one above.</div></div>
+      <div id="jlist"><div class="empty">No applications yet. Add your first one above.</div></div>
     </div>
   </div>
 
@@ -208,7 +213,7 @@ textarea{resize:vertical;min-height:110px;line-height:1.5}
       <div class="pg">
         <div class="pi"><div class="pp" style="color:var(--g)">★★★ Must use daily</div><div class="pn"><a href="https://www.linkedin.com/jobs/search/?f_TPR=r86400&f_E=1&keywords=data+analyst+fresher+india" target="_blank">LinkedIn Jobs ↗</a></div><div class="pno">Easy Apply. Fastest turnaround.</div></div>
         <div class="pi"><div class="pp" style="color:var(--g)">★★★ Must use daily</div><div class="pn"><a href="https://www.naukri.com/fresher-data-analyst-jobs" target="_blank">Naukri ↗</a></div><div class="pno">Largest Indian board. Freshers filter.</div></div>
-        <div class="pi"><div class="pp" style="color:var(--a)">★★ High priority</div><div class="pn"><a href="https://wellfound.com/jobs?role=data-engineer" target="_blank">Wellfound ↗</a></div><div class="pno">Best startup roles. Very fresher-friendly.</div></div>
+        <div class="pi"><div class="pp" style="color:var(--a)">★★ High priority</div><div class="pn"><a href="https://wellfound.com/jobs?role=data-engineer" target="_blank">Wellfound ↗</a></div><div class="pno">Best startup roles. Fresher-friendly.</div></div>
         <div class="pi"><div class="pp" style="color:var(--a)">★★ High priority</div><div class="pn"><a href="https://www.instahyre.com/" target="_blank">Instahyre ↗</a></div><div class="pno">AI matching. Mid-size companies.</div></div>
         <div class="pi"><div class="pp" style="color:var(--a)">★★ High priority</div><div class="pn"><a href="https://cutshort.io/jobs" target="_blank">CutShort ↗</a></div><div class="pno">Tech roles. Strong for Python/ML.</div></div>
         <div class="pi"><div class="pp" style="color:var(--tx3)">★ Use regularly</div><div class="pn"><a href="https://in.indeed.com/jobs?q=data+analyst+fresher&l=India&fromage=1" target="_blank">Indeed India ↗</a></div><div class="pno">Last 24h filter. Broad reach.</div></div>
@@ -219,7 +224,7 @@ textarea{resize:vertical;min-height:110px;line-height:1.5}
     </div>
     <div class="card">
       <div class="ct">LinkedIn search queries</div>
-      <div class="cd">Click to copy → paste into LinkedIn search → add "Past 24h" and "Entry level" filters.</div>
+      <div class="cd">Click to copy → paste into LinkedIn → add "Past 24h" and "Entry level" filters.</div>
       <div class="qb" onclick="cq(this)">"data analyst" OR "data engineer" fresher OR "entry level" India</div>
       <div class="qb" onclick="cq(this)">"ML engineer" OR "AI engineer" OR "analytics engineer" "0-1 year" OR "0-2 years" India</div>
       <div class="qb" onclick="cq(this)">"we are hiring" "data" "fresher" OR "graduate" India hiring</div>
@@ -228,27 +233,77 @@ textarea{resize:vertical;min-height:110px;line-height:1.5}
     </div>
     <div class="card">
       <div class="ct">Naukri power searches</div>
-      <div class="cd">Use these keyword strings in Naukri's search with Experience = 0–1 years and Date = Last 7 days.</div>
+      <div class="cd">Use in Naukri search with Experience = 0–1 years, Date = Last 7 days.</div>
       <div class="qb" onclick="cq(this)">data analyst python sql fresher</div>
       <div class="qb" onclick="cq(this)">data engineer etl python fresher entry level</div>
       <div class="qb" onclick="cq(this)">machine learning engineer associate fresher</div>
       <div class="qb" onclick="cq(this)">business analyst data analytics graduate trainee</div>
     </div>
   </div>
-
 </div>
 
-<!-- API Key Modal -->
+<!-- AI SETTINGS MODAL -->
 <div id="modal" class="ov" style="display:none">
   <div class="modal">
-    <div class="mt">Set your Anthropic API key</div>
-    <div class="mde">Your key is saved only in this browser (localStorage). It never leaves your device. Get a free key at <a href="https://console.anthropic.com" target="_blank" style="color:var(--bl)">console.anthropic.com</a> — the free tier is sufficient for this tool.</div>
-    <label>API key</label>
-    <input type="password" id="ak" placeholder="sk-ant-api03-..." />
-    <div class="br">
-      <button class="btn bp" onclick="saveKey()">Save key</button>
+    <div class="mt">AI Settings</div>
+    <div class="mde">Choose any provider. Your key is stored only in this browser — never sent anywhere except the provider's API.</div>
+
+    <label>Select provider</label>
+    <div class="providers">
+      <div class="prov-card selected" id="prov-groq" onclick="selProv('groq')">
+        <div class="prov-name">Groq</div>
+        <div class="prov-note">Llama 3, Mixtral</div>
+        <span class="prov-free">FREE tier available</span>
+      </div>
+      <div class="prov-card" id="prov-openrouter" onclick="selProv('openrouter')">
+        <div class="prov-name">OpenRouter</div>
+        <div class="prov-note">100+ models, many free</div>
+        <span class="prov-free">FREE models available</span>
+      </div>
+      <div class="prov-card" id="prov-anthropic" onclick="selProv('anthropic')">
+        <div class="prov-name">Anthropic</div>
+        <div class="prov-note">Claude models</div>
+      </div>
+      <div class="prov-card" id="prov-openai" onclick="selProv('openai')">
+        <div class="prov-name">OpenAI</div>
+        <div class="prov-note">GPT-4o, GPT-4o-mini</div>
+      </div>
+      <div class="prov-card" id="prov-gemini" onclick="selProv('gemini')">
+        <div class="prov-name">Google Gemini</div>
+        <div class="prov-note">Gemini 1.5 Flash/Pro</div>
+        <span class="prov-free">FREE tier available</span>
+      </div>
+      <div class="prov-card" id="prov-custom" onclick="selProv('custom')">
+        <div class="prov-name">Custom / Local</div>
+        <div class="prov-note">Any OpenAI-compatible API</div>
+      </div>
+    </div>
+
+    <label>API Key</label>
+    <input type="password" id="ak" placeholder="Paste your API key here..." />
+    <div style="font-size:11px;color:var(--tx3);margin-top:4px" id="key-hint"></div>
+
+    <div id="custom-url-wrap" style="display:none">
+      <label>API Endpoint URL</label>
+      <input type="text" id="custom-url" placeholder="http://localhost:11434/v1/chat/completions" />
+      <div style="font-size:11px;color:var(--tx3);margin-top:4px">Works with Ollama, LM Studio, or any OpenAI-compatible local server</div>
+    </div>
+
+    <label>Model</label>
+    <input type="text" id="mdl" placeholder="Model name..." />
+    <div class="model-chips" id="model-chips"></div>
+
+    <div class="divider"></div>
+    <div style="font-size:12px;color:var(--tx2);margin-bottom:1rem;line-height:1.6">
+      <strong>Recommended free option:</strong> Sign up at <a href="https://console.groq.com" target="_blank" style="color:var(--bl)">console.groq.com</a> → create an API key → paste it above. Use model <code style="background:var(--bg2);padding:1px 5px;border-radius:3px">llama-3.3-70b-versatile</code>. No credit card needed.
+    </div>
+
+    <div class="brow">
+      <button class="btn bp" onclick="saveSettings()">Save settings</button>
+      <button class="btn" id="test-btn" onclick="saveSettings();setTimeout(testConnection,400)">Save &amp; test</button>
       <button class="btn" onclick="hideModal()">Cancel</button>
     </div>
+    <div id="test-res" style="margin-top:10px;font-size:13px;line-height:1.5;white-space:pre-wrap"></div>
   </div>
 </div>
 
@@ -257,54 +312,212 @@ const STATUSES=['Applied','Assessment','Interview','Offered','Rejected'];
 const TODAY=new Date().toLocaleDateString('en-IN');
 let jobs=JSON.parse(localStorage.getItem('jh_jobs')||'[]');
 
-// API key
-const getKey=()=>localStorage.getItem('jh_key')||'';
-function saveKey(){const k=document.getElementById('ak').value.trim();if(!k){alert('Enter your API key.');return;}localStorage.setItem('jh_key',k);updateBadge();hideModal();}
-function showModal(){document.getElementById('ak').value=getKey();document.getElementById('modal').style.display='flex';}
+// ── Provider config ──────────────────────────────────────────
+const PROVIDERS={
+  groq:{
+    label:'Groq',
+    hint:'Get free key at console.groq.com — no credit card needed',
+    endpoint:'https://api.groq.com/openai/v1/chat/completions',
+    type:'openai',
+    models:['llama-3.3-70b-versatile','llama-3.1-8b-instant','mixtral-8x7b-32768','gemma2-9b-it'],
+    default:'llama-3.3-70b-versatile'
+  },
+  openrouter:{
+    label:'OpenRouter',
+    hint:'Get key at openrouter.ai — many free models available',
+    endpoint:'https://openrouter.ai/api/v1/chat/completions',
+    type:'openai',
+    models:['meta-llama/llama-3.3-70b-instruct:free','google/gemma-2-9b-it:free','mistralai/mistral-7b-instruct:free','deepseek/deepseek-r1:free'],
+    default:'meta-llama/llama-3.3-70b-instruct:free'
+  },
+  anthropic:{
+    label:'Anthropic',
+    hint:'Get key at console.anthropic.com',
+    endpoint:'https://api.anthropic.com/v1/messages',
+    type:'anthropic',
+    models:['claude-sonnet-4-20250514','claude-haiku-4-5-20251001','claude-opus-4-6'],
+    default:'claude-sonnet-4-20250514'
+  },
+  openai:{
+    label:'OpenAI',
+    hint:'Get key at platform.openai.com',
+    endpoint:'https://api.openai.com/v1/chat/completions',
+    type:'openai',
+    models:['gpt-4o-mini','gpt-4o','gpt-3.5-turbo'],
+    default:'gpt-4o-mini'
+  },
+  gemini:{
+    label:'Gemini',
+    hint:'Get free key at aistudio.google.com — no credit card needed',
+    endpoint:'gemini',
+    type:'gemini',
+    models:['gemini-1.5-flash','gemini-1.5-pro','gemini-2.0-flash'],
+    default:'gemini-1.5-flash'
+  },
+  custom:{
+    label:'Custom',
+    hint:'Enter your OpenAI-compatible endpoint URL below',
+    endpoint:'',
+    type:'openai',
+    models:[],
+    default:''
+  }
+};
+
+let currentProv='groq';
+
+function getSettings(){return JSON.parse(localStorage.getItem('jh_settings')||'{"provider":"groq","key":"","model":"llama-3.3-70b-versatile"}');}
+function selProv(p){
+  currentProv=p;
+  document.querySelectorAll('.prov-card').forEach(c=>c.classList.remove('selected'));
+  document.getElementById('prov-'+p).classList.add('selected');
+  const cfg=PROVIDERS[p];
+  document.getElementById('key-hint').textContent=cfg.hint;
+  document.getElementById('mdl').value=cfg.default;
+  document.getElementById('custom-url-wrap').style.display=p==='custom'?'block':'none';
+  // render model chips
+  const chips=document.getElementById('model-chips');
+  chips.innerHTML=cfg.models.map(m=>`<button class="chip" onclick="document.getElementById('mdl').value='${m}'">${m}</button>`).join('');
+}
+function showModal(){
+  const s=getSettings();
+  currentProv=s.provider||'groq';
+  document.querySelectorAll('.prov-card').forEach(c=>c.classList.remove('selected'));
+  document.getElementById('prov-'+currentProv).classList.add('selected');
+  document.getElementById('ak').value=s.key||'';
+  document.getElementById('mdl').value=s.model||PROVIDERS[currentProv].default;
+  document.getElementById('custom-url').value=s.customUrl||'';
+  document.getElementById('custom-url-wrap').style.display=currentProv==='custom'?'block':'none';
+  document.getElementById('key-hint').textContent=PROVIDERS[currentProv].hint;
+  const chips=document.getElementById('model-chips');
+  chips.innerHTML=PROVIDERS[currentProv].models.map(m=>`<button class="chip" onclick="document.getElementById('mdl').value='${m}'">${m}</button>`).join('');
+  document.getElementById('modal').style.display='flex';
+}
 function hideModal(){document.getElementById('modal').style.display='none';}
-function updateBadge(){const b=document.getElementById('api-btn');if(getKey()){b.className='api-btn ok';b.textContent='⚙ API Key ✓';}else{b.className='api-btn';b.textContent='⚙ Set API Key';}}
+function saveSettings(){
+  const k=document.getElementById('ak').value.trim();
+  const m=document.getElementById('mdl').value.trim();
+  if(!k){alert('Please enter your API key.');return;}
+  if(!m){alert('Please enter a model name.');return;}
+  const s={provider:currentProv,key:k,model:m,customUrl:document.getElementById('custom-url').value.trim()};
+  localStorage.setItem('jh_settings',JSON.stringify(s));
+  updateBadge();hideModal();
+}
+function updateBadge(){
+  const b=document.getElementById('api-btn');
+  const s=getSettings();
+  if(s.key){b.className='api-btn ok';b.textContent=`⚙ ${PROVIDERS[s.provider]?.label||s.provider} ✓`;}
+  else{b.className='api-btn';b.textContent='⚙ AI Settings';}
+}
 document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')hideModal();});
 
-// Tabs
-function sw(name,el){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));el.classList.add('active');document.getElementById('p-'+name).classList.add('active');}
+// ── Unified AI call ──────────────────────────────────────────
+async function callAI(prompt){
+  const s=getSettings();
+  if(!s.key){showModal();throw new Error('No API key set — click AI Settings to configure.');}
+  const cfg=PROVIDERS[s.provider];
+  const type=cfg?.type||'openai';
 
-// Claude call
-async function claude(prompt){
-  const k=getKey();if(!k){showModal();throw new Error('No API key set.');}
-  const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':k,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1200,messages:[{role:'user',content:prompt}]})});
-  if(!r.ok){const e=await r.json();throw new Error(e.error?.message||'API error '+r.status);}
-  const d=await r.json();return d.content.map(i=>i.text||'').join('');
+  try{
+    if(type==='anthropic'){
+      const r=await fetch('https://api.anthropic.com/v1/messages',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','x-api-key':s.key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+        body:JSON.stringify({model:s.model,max_tokens:1200,messages:[{role:'user',content:prompt}]})
+      });
+      if(!r.ok){const e=await r.json().catch(()=>({}));throw new Error(e.error?.message||'Anthropic error '+r.status);}
+      const d=await r.json();
+      return d.content.map(i=>i.text||'').join('');
+    }
+
+    if(type==='gemini'){
+      const model=s.model||'gemini-1.5-flash';
+      const url=`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(s.key)}`;
+      const r=await fetch(url,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({contents:[{parts:[{text:prompt}]}],generationConfig:{maxOutputTokens:1200,temperature:0.3}})
+      });
+      if(!r.ok){const e=await r.json().catch(()=>({}));throw new Error(e.error?.message||'Gemini error '+r.status+' — check your API key and model name');}
+      const d=await r.json();
+      return d.candidates?.[0]?.content?.parts?.[0]?.text||'';
+    }
+
+    // OpenAI-compatible: Groq, OpenRouter, OpenAI, Custom
+    const endpoint=s.provider==='custom'?(s.customUrl||''):(cfg?.endpoint||'');
+    if(!endpoint)throw new Error('No endpoint URL. Set a custom URL in AI Settings.');
+    const headers={'Content-Type':'application/json','Authorization':`Bearer ${s.key}`};
+    if(s.provider==='openrouter'){headers['HTTP-Referer']=location.href;headers['X-Title']='Job Hunt HQ';}
+    const r=await fetch(endpoint,{
+      method:'POST',
+      headers,
+      body:JSON.stringify({model:s.model,max_tokens:1200,messages:[{role:'system',content:'You are a helpful assistant. Always respond with valid JSON only when asked.'},{role:'user',content:prompt}],temperature:0.3})
+    });
+    if(!r.ok){const e=await r.json().catch(()=>({}));throw new Error(e.error?.message||`API error ${r.status} — invalid key or model name`);}
+    const d=await r.json();
+    return d.choices?.[0]?.message?.content||'';
+
+  }catch(e){
+    if(e.message.includes('Failed to fetch')||e.message.includes('NetworkError')||e.message.includes('network')){
+      throw new Error(`Network error: Cannot reach ${s.provider} API.\n\n• Check your internet connection\n• Your API key may be invalid\n• Try switching to OpenRouter (most reliable for browser use)`);
+    }
+    throw e;
+  }
 }
 
-// ATS
+// ── Test connection ───────────────────────────────────────────
+async function testConnection(){
+  const btn=document.getElementById('test-btn');
+  const res=document.getElementById('test-res');
+  btn.textContent='Testing...';btn.disabled=true;res.textContent='';
+  try{
+    const txt=await callAI('Reply with exactly this JSON and nothing else: {"status":"ok","message":"Connection successful"}');
+    res.style.color='var(--g)';
+    res.textContent=txt.includes('ok')?'✓ Connected! API is working.':'✓ Got response: '+txt.slice(0,80);
+  }catch(e){
+    res.style.color='var(--r)';
+    res.textContent='✗ '+e.message;
+  }
+  btn.textContent='Test connection';btn.disabled=false;
+}
+
+// ── Tabs ─────────────────────────────────────────────────────
+function sw(name,el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');document.getElementById('p-'+name).classList.add('active');
+}
+
+// ── ATS Analyzer ─────────────────────────────────────────────
 async function runATS(){
   const jd=document.getElementById('jd').value.trim();
   const cv=document.getElementById('cv').value.trim();
   if(!jd||!cv){alert('Please paste both the job description and your resume.');return;}
   const out=document.getElementById('ats-out');const body=document.getElementById('ats-body');
   out.style.display='block';
-  body.innerHTML='<div class="ld"><span class="dot"></span><span class="dot"></span><span class="dot"></span>&nbsp;Analyzing with AI...</div>';
+  body.innerHTML='<div class="ld"><span class="dot"></span><span class="dot"></span><span class="dot"></span>&nbsp;Analyzing...</div>';
   document.getElementById('sc-n').textContent='—';document.getElementById('sc-bar').style.width='0%';
   try{
-    const txt=await claude(`ATS expert. Analyze JD vs resume for a fresher in India. Return ONLY raw JSON (no markdown, no backticks, no explanation):
-{"score":85,"verdict":"Strong match","missing_keywords":["kw1","kw2","kw3","kw4","kw5"],"present_keywords":["kw1","kw2","kw3"],"improvements":["Specific fix 1","Specific fix 2","Specific fix 3","Specific fix 4"],"tailored_summary":"2-sentence professional summary tailored exactly to this JD, ready to paste into resume"}
+    const txt=await callAI(`You are an ATS expert. Analyze this JD vs resume for a fresher in India. Return ONLY valid raw JSON — no markdown, no backticks, no explanation before or after:
+{"score":85,"verdict":"Strong match","missing_keywords":["kw1","kw2","kw3","kw4","kw5"],"present_keywords":["kw1","kw2","kw3"],"improvements":["Fix 1","Fix 2","Fix 3","Fix 4"],"tailored_summary":"2-sentence professional summary tailored to this JD, ready to paste into resume"}
 JD: ${jd.slice(0,2500)}
 RESUME: ${cv.slice(0,2500)}`);
     let p;try{p=JSON.parse(txt.replace(/```json|```/g,'').trim());}catch(e){body.innerHTML=`<pre style="white-space:pre-wrap;font-size:12px">${txt}</pre>`;return;}
     const sc=p.score||0;
     document.getElementById('sc-n').textContent=sc+'%';
-    const bar=document.getElementById('sc-bar');bar.style.width=sc+'%';bar.style.background=sc>=75?'#15803d':sc>=50?'#b45309':'#dc2626';
+    const bar=document.getElementById('sc-bar');bar.style.width=sc+'%';
+    bar.style.background=sc>=75?'#15803d':sc>=50?'#b45309':'#dc2626';
     document.getElementById('sc-v').textContent=p.verdict||'';
     body.innerHTML=`
-      <div style="margin-bottom:14px"><strong>Missing keywords — add these to your resume now:</strong><br style="margin-bottom:6px">${(p.missing_keywords||[]).map(k=>`<span class="badge br2">${k}</span>`).join('')}</div>
-      <div style="margin-bottom:14px"><strong>Keywords already present:</strong><br>${(p.present_keywords||[]).map(k=>`<span class="badge bg">${k}</span>`).join('')}</div>
-      <div style="margin-bottom:14px"><strong>How to improve this resume for this role:</strong>${(p.improvements||[]).map((s,i)=>`<div style="margin-top:8px;padding:8px 12px;background:var(--bg3);border-radius:var(--rad2);border-left:2px solid var(--br2)">${i+1}. ${s}</div>`).join('')}</div>
-      <div><strong>Tailored summary — paste this into your resume objective:</strong><div style="margin-top:8px;padding:12px;background:var(--bg3);border-radius:var(--rad2);font-style:italic;line-height:1.6">${p.tailored_summary||''}</div></div>`;
+      <div style="margin-bottom:14px"><strong>Missing keywords — add these to your resume:</strong><br style="margin-bottom:4px">${(p.missing_keywords||[]).map(k=>`<span class="badge brd">${k}</span>`).join('')}</div>
+      <div style="margin-bottom:14px"><strong>Already present:</strong><br>${(p.present_keywords||[]).map(k=>`<span class="badge bgr">${k}</span>`).join('')}</div>
+      <div style="margin-bottom:14px"><strong>How to improve:</strong>${(p.improvements||[]).map((s,i)=>`<div style="margin-top:8px;padding:8px 12px;background:var(--bg3);border-radius:var(--rad2);border-left:2px solid var(--br2)">${i+1}. ${s}</div>`).join('')}</div>
+      <div><strong>Tailored summary — paste into your resume objective:</strong><div style="margin-top:8px;padding:12px;background:var(--bg3);border-radius:var(--rad2);font-style:italic;line-height:1.6">${p.tailored_summary||''}</div></div>`;
   }catch(e){body.innerHTML=`<div style="color:var(--r);font-size:13px">${e.message}</div>`;}
 }
 function clrATS(){document.getElementById('jd').value='';document.getElementById('cv').value='';document.getElementById('ats-out').style.display='none';}
 
-// Outreach
+// ── Outreach ──────────────────────────────────────────────────
 async function runOut(){
   const name=document.getElementById('o-name').value.trim()||'[Your Name]';
   const co=document.getElementById('o-co').value.trim()||'[Company]';
@@ -315,18 +528,18 @@ async function runOut(){
   res.style.display='block';
   body.innerHTML='<div class="ld"><span class="dot"></span><span class="dot"></span><span class="dot"></span>&nbsp;Generating messages...</div>';
   try{
-    const txt=await claude(`Generate 3 LinkedIn messages for a fresher B.Tech grad in India. Return ONLY raw JSON (no markdown, no backticks):
-{"connection_request":"LinkedIn connection request, max 280 chars, warm and professional, no generic phrases","referral_request":"Referral request message, max 450 chars, polite and specific","follow_up":"Follow-up message sent 48h after applying, max 260 chars, brief and professional"}
-Applicant: ${name} | Company: ${co} | Role: ${role} | Recruiter/HM: ${rec}${sk?' | Skills/achievement: '+sk:''}`);
+    const txt=await callAI(`Generate 3 LinkedIn messages for a fresher B.Tech grad in India. Return ONLY valid raw JSON — no markdown, no backticks:
+{"connection_request":"LinkedIn connection request max 280 chars, warm and specific, no generic phrases","referral_request":"Referral request max 450 chars, polite and specific","follow_up":"Follow-up 48h after applying, max 260 chars, brief and professional"}
+Applicant: ${name} | Company: ${co} | Role: ${role} | Recruiter: ${rec}${sk?' | Skills: '+sk:''}`);
     let p;try{p=JSON.parse(txt.replace(/```json|```/g,'').trim());}catch(e){body.innerHTML=`<pre style="font-size:12px;white-space:pre-wrap">${txt}</pre>`;return;}
     const mk=(label,key)=>`<div style="margin-bottom:16px"><div class="ml"><span>${label}</span><button class="btn bs" onclick="cp(${JSON.stringify(p[key]||'')})">Copy</button></div><div class="mb2">${p[key]||''}</div></div>`;
-    body.innerHTML=mk('LinkedIn connection request','connection_request')+mk('Referral request','referral_request')+mk('Follow-up message (send after 48h)','follow_up');
+    body.innerHTML=mk('LinkedIn connection request','connection_request')+mk('Referral request','referral_request')+mk('Follow-up (send after 48h)','follow_up');
   }catch(e){body.innerHTML=`<div style="color:var(--r);font-size:13px">${e.message}</div>`;}
 }
 function clrOut(){['o-name','o-co','o-role','o-rec','o-skill'].forEach(id=>document.getElementById(id).value='');document.getElementById('out-res').style.display='none';}
-function cp(text){navigator.clipboard.writeText(text).then(()=>{/*silent*/}).catch(()=>{const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();});alert('Copied to clipboard!');}
+function cp(text){navigator.clipboard.writeText(text).catch(()=>{const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();});alert('Copied!');}
 
-// Tracker
+// ── Tracker ───────────────────────────────────────────────────
 function addJob(){
   const job=document.getElementById('t-job').value.trim();if(!job)return;
   const src=document.getElementById('t-src').value.trim()||'—';
@@ -338,28 +551,27 @@ function addJob(){
 function upd(id,val){const j=jobs.find(x=>x.id===id);if(j){j.status=val;save();stats();}}
 function render(){
   const l=document.getElementById('jlist');document.getElementById('jcount').textContent=jobs.length;
-  if(!jobs.length){l.innerHTML='<div class="empty">No applications yet. Add your first one above.</div>';return;}
+  if(!jobs.length){l.innerHTML='<div class="empty">No applications yet.</div>';return;}
   l.innerHTML=jobs.map(j=>`<div class="jr"><div><div class="jt">${j.job}</div><div class="jm">${j.src} &middot; ${j.date}${j.ats?' &middot; ATS: '+j.ats+'%':''}</div></div><select class="ss" onchange="upd(${j.id},this.value)">${STATUSES.map(s=>`<option${s===j.status?' selected':''}>${s}</option>`).join('')}</select></div>`).join('');
 }
 function stats(){
-  const tot=jobs.length;const tod=jobs.filter(j=>j.date===TODAY).length;const ints=jobs.filter(j=>j.status==='Interview'||j.status==='Offered').length;
-  const scores=jobs.filter(j=>j.ats&&!isNaN(j.ats)).map(j=>+j.ats);
-  const avg=scores.length?Math.round(scores.reduce((a,b)=>a+b,0)/scores.length)+'%':'—';
-  document.getElementById('s-total').textContent=tot;document.getElementById('s-today').textContent=tod;document.getElementById('s-int').textContent=ints;document.getElementById('s-avg').textContent=avg;
+  document.getElementById('s-total').textContent=jobs.length;
+  document.getElementById('s-today').textContent=jobs.filter(j=>j.date===TODAY).length;
+  document.getElementById('s-int').textContent=jobs.filter(j=>j.status==='Interview'||j.status==='Offered').length;
+  const sc=jobs.filter(j=>j.ats&&!isNaN(j.ats)).map(j=>+j.ats);
+  document.getElementById('s-avg').textContent=sc.length?Math.round(sc.reduce((a,b)=>a+b,0)/sc.length)+'%':'—';
 }
 function save(){localStorage.setItem('jh_jobs',JSON.stringify(jobs));}
-function clrJobs(){if(confirm('Clear all logged applications? This cannot be undone.')){jobs=[];save();render();stats();}}
+function clrJobs(){if(confirm('Clear all applications? Cannot be undone.')){jobs=[];save();render();stats();}}
 function exportCSV(){
   if(!jobs.length)return;
-  const rows=[['Job / Company','Source','Date Added','ATS Score','Status'],...jobs.map(j=>[j.job,j.src,j.date,j.ats,j.status])];
+  const rows=[['Job / Company','Source','Date','ATS Score','Status'],...jobs.map(j=>[j.job,j.src,j.date,j.ats,j.status])];
   const csv=rows.map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
-  const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);a.download='job_applications_'+TODAY.replace(/\//g,'-')+'.csv';a.click();
+  const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);a.download='applications_'+TODAY.replace(/\//g,'-')+'.csv';a.click();
 }
-
-// Copy search query
 function cq(el){
   const txt=el.textContent.replace('click to copy','').trim();
-  navigator.clipboard.writeText(txt).then(()=>{el.style.background='var(--gbg)';setTimeout(()=>el.style.background='',900);}).catch(()=>{const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();el.style.background='var(--gbg)';setTimeout(()=>el.style.background='',900);});
+  navigator.clipboard.writeText(txt).then(()=>{el.style.background='var(--gbg)';setTimeout(()=>el.style.background='',900);}).catch(()=>{const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();});
 }
 
 // Init
